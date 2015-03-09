@@ -25,7 +25,7 @@ install:
 	$(MAKE) install -C site-packages
 	@echo 'Make app symlinks...'
 	ln -s $(abspath applications/myfreedomm) \
-		$(abspath $(TARGET_WEB2PY_DIR)/applications/myfreedomm)
+		$(abspath $(TARGET_WEB2PY_DIR)/applications/myfreecomm)
 	ln -s $(abspath requirements.txt) \
 		$(abspath $(TARGET_WEB2PY_DIR)/requirements.txt)
 	ln -s $(abspath deploy/routes.py) \
