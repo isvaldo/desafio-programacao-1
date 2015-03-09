@@ -77,3 +77,5 @@ db.define_table('sales',
                 Field('item_id', db.item),
                 Field('merchant_id', db.merchant),
                 Field('purchase_count'))
+
+auth.enable_record_versioning(db)

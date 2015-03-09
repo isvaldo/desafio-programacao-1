@@ -39,6 +39,7 @@
 'Available Databases and Tables': 'Bancos de dados e tabelas disponíveis',
 'Back': 'voltar',
 'Bairro': 'Bairro',
+'Bem vindo ao My Finance Import': 'Bem vindo ao My Finance Import',
 'Bem vindo!, Você está logado': 'Bem vindo!, Você está logado',
 'Buy this book': 'Compre o livro',
 'cache': 'cache',

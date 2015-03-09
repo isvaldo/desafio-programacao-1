@@ -11,32 +11,19 @@
 
 def index():
     """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
+    Pagina inicial
+    @TODO isvaldo, bolar algo legal aqui
     """
-    response.flash = T("Welcome to web2py!")
+    response.flash = T("Bem vindo ao My Finance Import")
     return dict(message=T('Hello World'))
 
 
 def user():
     """
-    exposes:
-    http://..../[app]/default/user/login
-    http://..../[app]/default/user/logout
-    http://..../[app]/default/user/register
-    http://..../[app]/default/user/profile
-    http://..../[app]/default/user/retrieve_password
-    http://..../[app]/default/user/change_password
-    http://..../[app]/default/user/manage_users (requires membership in
-    use @auth.requires_login()
-        @auth.requires_membership('group name')
-        @auth.requires_permission('read','table name',record_id)
-    to decorate functions that need access control
+    Pagina para controle de acesso
     """
     return dict(form=auth())
+
 
 
 @cache.action()
@@ -66,6 +53,6 @@ def api():
     """
     from gluon.contrib.hypermedia import Collection
     rules = {
-        '<tablename>': {'GET':{},'POST':{},'PUT':{},'DELETE':{}},
+        '<tablename>': {'GET': {}, 'POST': {}, 'PUT': {}, 'DELETE': {}},
         }
     return Collection(db).process(request, response, rules)
