@@ -1,0 +1,12 @@
+*~
+*.pyc
+*.sqlite
+*.table
+*.log
+errors/
+.idea/
+sessions/
+uploads/
+cache/
+.idea/
+web2py/
