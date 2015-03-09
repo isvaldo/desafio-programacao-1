@@ -9,8 +9,8 @@ export TAG=migrate-$(BRANCH)
 export DB_TYPE=mysql
 export RDS_HOSTNAME=localhost
 export RDS_USERNAME=root
-export RDS_PASSWORD=
-export RDS_DB_NAME=myfreecommm
+export RDS_PASSWORD=myfreecomm123
+export RDS_DB_NAME=myfreecomm
 export RDS_PORT=3306
 
 #for web2py

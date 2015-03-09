@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from gluon.tools import Auth, Service, PluginManager
+from gluon.tools import Auth
+import os
 
 
 #########################################################################
 ## #TODO isvaldo, documentar a configuração da base
-##
 #########################################################################
 
 
@@ -45,6 +45,7 @@ mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
 mail.settings.sender = 'you@gmail.com'
 mail.settings.login = 'username:password'
 
+
 ## configure auth policy
 auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
@@ -56,8 +57,23 @@ from gluon.contrib.login_methods.janrain_account import use_janrain
 use_janrain(auth, filename='private/janrain.key')
 
 
-######
-#
-# Colocar modelagem aqui
-#
-####
+##############################################
+##########  BANCO DE DADOS  ##################
+##############################################
+
+## Tabela de itens.
+db.define_table('item',
+                Field('item_description'),
+                Field('item_price'))
+
+## Tabela de comerciante.
+db.define_table('merchant',
+                Field('merchant_name'),
+                Field('merchant_address'))
+
+## Tabela para registrar vendas.
+db.define_table('sales',
+                Field('purchaser_name'),
+                Field('item_id', db.item),
+                Field('merchant_id', db.merchant),
+                Field('purchase_count'))
