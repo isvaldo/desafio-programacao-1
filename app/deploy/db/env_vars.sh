@@ -5,14 +5,14 @@ export VERSION_CONTROL_TYPE=git
 export BRANCH=$(CI_BRANCH)
 export TAG=migrate-$(BRANCH)
 
-#for database
-export DB_TYPE=
-export RDS_HOSTNAME=
-export RDS_USERNAME=
+#for database,for security, configure the variables in the production environment manually
+export DB_TYPE=mysql
+export RDS_HOSTNAME=localhost
+export RDS_USERNAME=root
 export RDS_PASSWORD=
-export RDS_DB_NAME=
-export RDS_PORT=5432
+export RDS_DB_NAME=myfreecommm
+export RDS_PORT=3306
 
 #for web2py
 export WEB2PY=$(TARGET_WEB2PY_DIR)
-export APP=myfreedomm
+export APP=myfreecomm

@@ -68,4 +68,4 @@ def api():
     rules = {
         '<tablename>': {'GET':{},'POST':{},'PUT':{},'DELETE':{}},
         }
-    return Collection(db).process(request,response,rules)
+    return Collection(db).process(request, response, rules)

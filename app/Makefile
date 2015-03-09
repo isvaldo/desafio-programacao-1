@@ -24,7 +24,7 @@ uninstall:
 install:
 	$(MAKE) install -C site-packages
 	@echo 'Make app symlinks...'
-	ln -s $(abspath applications/myfreedomm) \
+	ln -s $(abspath applications/myfreecomm) \
 		$(abspath $(TARGET_WEB2PY_DIR)/applications/myfreecomm)
 	ln -s $(abspath requirements.txt) \
 		$(abspath $(TARGET_WEB2PY_DIR)/requirements.txt)
