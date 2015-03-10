@@ -212,6 +212,7 @@
 'Preface': 'Prefácio',
 'previous %s rows': 'previous %s rows',
 'previous 100 rows': '100 linhas anteriores',
+'Price': 'Price',
 'Profile': 'Profile',
 'Profile updated': 'Profile updated',
 'pygraphviz library not found': 'pygraphviz library not found',

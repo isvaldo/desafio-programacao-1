@@ -42,10 +42,11 @@ class SalesImport(SqlImport):
         """
         Para cada chamada uma nova linha é pré-configurada
         :param row: dict
-        :return:
+        :return: self
         """
         self.row = row
         self.sort_dict()
+        return self
 
     def sort_dict(self):
         """
@@ -60,7 +61,7 @@ class SalesImport(SqlImport):
         Verifica duplicidades, Faz Insert no banco de dados
         :return:
         """
-        print self.row_map
+        print self.row_map['price']
 
 
 
