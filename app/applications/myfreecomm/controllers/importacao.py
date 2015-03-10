@@ -8,7 +8,7 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 ## - api is an example of Hypermedia API support and access control
 #########################################################################
-
+from import_filter import SalesImport
 from pyheaderfile import Csv
 import os
 
@@ -23,9 +23,13 @@ def index():
                        encode="utf-8",
                        strip=True,
                        delimiters=["\t"])
+        ###
+        # Importação dos dados
+        ##
+        sales_import = SalesImport(db)
 
         for row in file_csv.read():
-
+            sales_import(row).insert()
 
         response.flash = "Arquivo importado com sucesso"
 

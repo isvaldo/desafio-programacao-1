@@ -63,19 +63,19 @@ use_janrain(auth, filename='private/janrain.key')
 
 ## Tabela de itens.
 db.define_table('item',
-                Field('item_description'),
-                Field('item_price'))
+                Field('description'),
+                Field('price'))
 
 ## Tabela de comerciante.
 db.define_table('merchant',
-                Field('merchant_name'),
-                Field('merchant_address'))
+                Field('name'),
+                Field('address'))
 
 ## Tabela para registrar vendas.
 db.define_table('sales',
                 Field('purchaser_name'),
                 Field('item_id', db.item),
                 Field('merchant_id', db.merchant),
-                Field('purchase_count'))
+                Field('count'))
 
 auth.enable_record_versioning(db)
