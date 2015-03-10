@@ -14,8 +14,19 @@ def index():
     Pagina inicial
     @TODO isvaldo, bolar algo legal aqui
     """
-    response.flash = T("Bem vindo ao My Finance Import")
-    return dict(message=T('Hello World'))
+    response.flash = T("Bem vindo, Sales import")
+
+    return dict()
+
+
+def editar():
+    """
+    Pagina edit
+    @TODO isvaldo, bolar algo legal aqui
+    """
+    grid = SQLFORM.grid(db.item, db.merchant)
+
+    return dict(grid=grid)
 
 
 def user():
@@ -23,7 +34,6 @@ def user():
     Pagina para controle de acesso
     """
     return dict(form=auth())
-
 
 
 @cache.action()

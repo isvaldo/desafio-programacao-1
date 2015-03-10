@@ -9,8 +9,26 @@
 ## - api is an example of Hypermedia API support and access control
 #########################################################################
 
+from pyheaderfile import Csv
+import os
 
 
 def index():
-    
-    return dict()
+    form = SQLFORM.factory(
+        Field('arquivo', 'upload', uploadfolder=os.path.join(request.folder, 'uploads')),
+        submit_button="importar")
+
+    if form.process().accepted:
+        file_csv = Csv(name=os.path.join(request.folder, 'uploads', form.vars.arquivo),
+                       encode="utf-8",
+                       strip=True,
+                       delimiters=["\t"])
+
+        for row in file_csv.read():
+
+
+        response.flash = "Arquivo importado com sucesso"
+
+
+
+    return dict(form=form)
