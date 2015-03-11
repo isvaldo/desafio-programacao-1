@@ -27,8 +27,11 @@ se precisar remotar
 make uninstall
 ```
 
-![err2](http://imgur.com/JKLEonP,s9MuOlZ#0)
+## pagina principal
+![err2](http://i.imgur.com/JKLEonP.png)
 
+
+## edição 
 ![err3](http://i.imgur.com/Tf3E90H.png)
 
  
