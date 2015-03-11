@@ -74,8 +74,8 @@ db.define_table('merchant',
 ## Tabela para registrar vendas.
 db.define_table('sales',
                 Field('purchaser_name',  notnull=True),
-                Field('item_id', db.item),
-                Field('merchant_id', db.merchant),
+                Field('item_id', db.item, requires=IS_IN_DB(db, 'item.id', '%(description)s')),
+                Field('merchant_id', db.merchant, requires=IS_IN_DB(db, 'merchant.id', '%(name)s')),
                 Field('count',  notnull=True))
 
 auth.enable_record_versioning(db)

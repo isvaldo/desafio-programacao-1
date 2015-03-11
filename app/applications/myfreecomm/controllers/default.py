@@ -29,10 +29,11 @@ def editar():
     """
 
     ## Filtro para representar tabelas na grid
-    db.sales.item_id.label = "Preço item"
-    db.sales.merchant_id.label = "Mercador"
-    db.sales.item_id.filter_out = lambda id: 'R$ '+db(db.item.id == id).select(db.item.price).first().price
-    db.sales.merchant_id.filter_out = lambda id: db(db.merchant.id == id).select(db.merchant.name).first().name
+    if not request.args(0):
+        db.sales.item_id.label = "Preço item"
+        db.sales.merchant_id.label = "Mercador"
+        db.sales.item_id.filter_out = lambda id: 'R$ '+db(db.item.id == id).select(db.item.price).first().price
+        db.sales.merchant_id.filter_out = lambda id: db(db.merchant.id == id).select(db.merchant.name).first().name
 
 
     ## recebe parametro table e mostra a grid correspondente
