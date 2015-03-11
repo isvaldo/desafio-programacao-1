@@ -2,11 +2,11 @@
 # this file is released under public domain and you can use without limitations
 
 #########################################################################
-## Customize your APP title, subtitle and menus here
+## Configuração do menu
 #########################################################################
 
 response.logo = A('My Sales Import',
-                  _class="brand",_href="")
+                  _class="brand", _href="")
 response.title = request.application.replace('_', ' ').title()
 response.subtitle = ''
 
@@ -19,12 +19,16 @@ response.meta.generator = 'Web2py Web Framework'
 response.google_analytics_id = None
 
 #########################################################################
-## this is the main application menu add/remove items as required
+## Configurando Menu e sub menu
 #########################################################################
 
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
-    (T('Editar'), False, URL('default', 'editar'), []),
+    (T('Edição'), False, '', [
+        (T('Editar Produtos'), False, URL('default', 'editar', vars=dict(table='item')), []),
+        (T('Editar Mercador'), False, URL('default', 'editar', vars=dict(table='merchant')), []),
+        (T('Editar Vendas'), False, URL('default', 'editar', vars=dict(table='sales')), [])
+    ]),
     (T('Importação'), False, URL('importacao', 'index'), [])
 ]
 

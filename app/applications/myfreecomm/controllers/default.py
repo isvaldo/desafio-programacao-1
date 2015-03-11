@@ -9,6 +9,8 @@
 ## - api is an example of Hypermedia API support and access control
 #########################################################################
 
+
+@auth.requires_login()
 def index():
     """
     Pagina inicial
@@ -19,19 +21,24 @@ def index():
     return dict()
 
 
+@auth.requires_login()
 def editar():
     """
-    Pagina edit
-    @TODO isvaldo, bolar algo legal aqui
+    Recebe como parametro Args, retorna um grid da tabela
+    correspondende, retorna em 404 para valores invalidos
     """
-    grid = SQLFORM.grid(db.item, db.merchant)
+    targe_table = request.vars.table
+    if targe_table in ['sales', 'item', 'merchant']:
+        grid = SQLFORM.grid(db[targe_table])
+    else:
+        raise HTTP(404, "Pagina não encontrada")
 
     return dict(grid=grid)
 
 
 def user():
     """
-    Pagina para controle de acesso
+    Pagina para controle de acesso, login,registro,recuperação de senha
     """
     return dict(form=auth())
 

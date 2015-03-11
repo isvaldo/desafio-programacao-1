@@ -14,22 +14,32 @@ import os
 
 
 def index():
+    ## Configuração do formulario para upload
     form = SQLFORM.factory(
-        Field('arquivo', 'upload', uploadfolder=os.path.join(request.folder, 'uploads')),
+        Field('arquivo', 'upload',
+              uploadfolder=os.path.join(request.folder, 'uploads'),
+              requires=IS_UPLOAD_FILENAME(extension='tab')),
         submit_button="importar")
 
+    ## Tratativa condicionada a aceitação do formulario
     if form.process().accepted:
         file_csv = Csv(name=os.path.join(request.folder, 'uploads', form.vars.arquivo),
                        encode="utf-8",
                        strip=True,
                        delimiters=["\t"])
-        ###
-        # Importação dos dados
-        ##
-        sales_import = SalesImport(db)
+        ## Configurando db
+        sales_import = SalesImport(db=db)
 
-        for row in file_csv.read():
-            sales_import(row).insert()
+        try:
+            ## formatando dados do arquivo para banco
+            for row in file_csv.read():
+                sales_import(row=row).format()
+
+        except:
+            response.flash = "Erro ao processar arquivo, verifique a formatação"
+            return dict(form=form)
+
+        sales_import.insert_all()
 
         response.flash = "Arquivo importado com sucesso"
 
