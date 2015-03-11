@@ -1,12 +1,8 @@
 #! /usr/bin/env bash
 
-#for version control
-export VERSION_CONTROL_TYPE=git
-export BRANCH=$(CI_BRANCH)
-export TAG=migrate-$(BRANCH)
-
-#for database,for security, configure the variables in the production environment manually
-export DB_TYPE=mysql
+#Configure conexão aqui caso não queria usar SQLITE
+#export IS_AMAZON #variavel de controle de produção
+export DB_TYPE=mysql 
 export RDS_HOSTNAME=localhost
 export RDS_USERNAME=root
 export RDS_PASSWORD=myfreecomm123
