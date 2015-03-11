@@ -10,12 +10,13 @@ Instalação no Ubuntu
 ```
 $ sudo apt-get install python-dev
 $ sudo apt-get install python-pip
+$ sudo apt-get install unzip
 ```
 Instalação local
 
 ```
 make install
-install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 
