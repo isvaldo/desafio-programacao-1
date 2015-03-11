@@ -20,12 +20,6 @@ DATABASES = {
     }
 }
 
-EMAIL_CONF = {
-    'mandrill': {
-
-    }
-}
-
 
 #################################
 # @TODO isvaldo, documentar conexão
@@ -57,8 +51,8 @@ auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
 
-## if you need to use OpenID, Facebook, MySpace, Twitter, Linkedin, etc.
-## register with janrain.com, write your domain:api_key in private/janrain.key
+
+## Configurando Acesso via Oauth
 from gluon.contrib.login_methods.janrain_account import use_janrain
 use_janrain(auth, filename='private/janrain.key')
 

@@ -5,9 +5,9 @@
 ## Configuração do menu
 #########################################################################
 
-response.logo = A('My Sales Import',
+response.logo = A('Sales Import',
                   _class="brand", _href="")
-response.title = request.application.replace('_', ' ').title()
+response.title = "Sales Import"
 response.subtitle = ''
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
@@ -26,7 +26,7 @@ response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
     (T('Edição'), False, '', [
         (T('Editar Produtos'), False, URL('default', 'editar', vars=dict(table='item')), []),
-        (T('Editar Mercador'), False, URL('default', 'editar', vars=dict(table='merchant')), []),
+        (T('Editar Comércio'), False, URL('default', 'editar', vars=dict(table='merchant')), []),
         (T('Editar Vendas'), False, URL('default', 'editar', vars=dict(table='sales')), [])
     ]),
     (T('Importação'), False, URL('importacao', 'index'), [])

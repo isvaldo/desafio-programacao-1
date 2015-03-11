@@ -1,3 +1,14 @@
+{{# -*- coding: utf-8 -*-}}
 {{extend 'layout.html'}}
 
-<h6> HOME </h6>
+<h4> Bem vindo</h4>
+
+<p>Explore nossos recursos !</p>
+
+<ul>
+    <li><b>{{=A('Importação',_href=URL('importacao','index'))}}</b></li>
+    <li><b>{{=A('Editar Itens',_href=URL('default', 'editar', vars=dict(table='item')))}}</b></li>
+    <li><b>{{=A('Editar Comércio',_href=URL('default', 'editar', vars=dict(table='item')))}}</b></li>
+    <li><b>{{=A('Editar Vendas',_href=URL('default', 'editar', vars=dict(table='item')))}}</b></li>
+
+</ul>

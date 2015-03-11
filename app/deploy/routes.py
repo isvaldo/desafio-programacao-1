@@ -104,7 +104,7 @@ routers = dict(
 
     # base router
     BASE=dict(
-        default_application='myfreedomm',
+        default_application='myfreecomm',
     ),
 )
 
