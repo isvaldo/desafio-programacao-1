@@ -39,7 +39,7 @@ def editar():
     ## recebe parametro table e mostra a grid correspondente
     targe_table = request.vars.table
     if targe_table in ['sales', 'item', 'merchant']:
-        grid = SQLFORM.grid(db[targe_table],advanced_search=False)
+        grid = SQLFORM.grid(db[targe_table], advanced_search=False)
     else:
         raise HTTP(404, "Pagina não encontrada")
 

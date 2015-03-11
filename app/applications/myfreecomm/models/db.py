@@ -20,6 +20,12 @@ DATABASES = {
     }
 }
 
+EMAIL_CONF = {
+    'mandrill': {
+
+    }
+}
+
 
 #################################
 # @TODO isvaldo, documentar conexão
@@ -41,9 +47,9 @@ auth.define_tables(username=False, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
-mail.settings.sender = 'you@gmail.com'
-mail.settings.login = 'username:password'
+mail.settings.server = 'logging' if request.is_local else 'smtp.mandrillapp.com'
+mail.settings.sender = 'isvaldo.fernandes@gmail.com'
+mail.settings.login = 'isvaldo.fernandes@gmail.com:sG-KmIL6VJ151dktJZ2fnw'
 
 
 ## configure auth policy
