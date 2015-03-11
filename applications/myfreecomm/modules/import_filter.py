@@ -38,7 +38,7 @@ class SalesImport(SqlImport):
                                name="merchant name",
                                address="merchant address",
                                purchaser_name="purchaser name",
-                               count="purchase count")
+                               count_item="purchase count")
 
     def __call__(self, **kwargs):
         """
@@ -47,7 +47,7 @@ class SalesImport(SqlImport):
         :return: self
         """
         self.row = kwargs['row']
-        self.row_map = dict()
+        self.row_map = dict(user_id=kwargs['user_id'])
         return self
 
     def __sort_dict(self):

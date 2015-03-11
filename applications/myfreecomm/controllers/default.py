@@ -13,8 +13,7 @@
 @auth.requires_login()
 def index():
     """
-    Pagina inicial
-    @TODO isvaldo, bolar algo legal aqui
+    Pagian inicial, lista funcionalidades
     """
     response.flash = T("Bem vindo, Sales import")
 
@@ -39,7 +38,8 @@ def editar():
     ## recebe parametro table e mostra a grid correspondente
     targe_table = request.vars.table
     if targe_table in ['sales', 'item', 'merchant']:
-        grid = SQLFORM.grid(db[targe_table], advanced_search=False)
+        grid = SQLFORM.grid(db[targe_table].user_id == auth.user_id,
+                            advanced_search=False)
     else:
         raise HTTP(404, "Pagina não encontrada")
 

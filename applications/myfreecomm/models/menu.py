@@ -21,15 +21,15 @@ response.google_analytics_id = None
 #########################################################################
 ## Configurando Menu e sub menu
 #########################################################################
-
-response.menu = [
-    (T('Home'), False, URL('default', 'index'), []),
-    (T('Edição'), False, '', [
-        (T('Editar Produtos'), False, URL('default', 'editar', vars=dict(table='item')), []),
-        (T('Editar Comércio'), False, URL('default', 'editar', vars=dict(table='merchant')), []),
-        (T('Editar Vendas'), False, URL('default', 'editar', vars=dict(table='sales')), [])
-    ]),
-    (T('Importação'), False, URL('importacao', 'index'), [])
+if auth.is_logged_in():
+    response.menu = [
+        (T('Home'), False, URL('default', 'index'), []),
+        (T('Edição'), False, '', [
+            (T('Editar Produtos'), False, URL('default', 'editar', vars=dict(table='item')), []),
+            (T('Editar Comércio'), False, URL('default', 'editar', vars=dict(table='merchant')), []),
+            (T('Editar Vendas'), False, URL('default', 'editar', vars=dict(table='sales')), [])
+        ]),
+        (T('Importação'), False, URL('importacao', 'index'), [])
 ]
 
 DEVELOPMENT_MENU = True

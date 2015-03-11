@@ -5,10 +5,9 @@ export ROOT_DIR
 TARGET_WEB2PY_DIR = $(abspath web2py)
 export TARGET_WEB2PY_DIR
 
-.PHONY: all install uninstall run migrate deploy stop \
-		aws sync
+.PHONY: all install uninstall run
 all:
-	$(error Please specify target. Valid targets are: install, uninstall, deploy, migrate, aws, run or stop)
+	$(error Please specify target. Valid targets are: install, uninstall, run or stop)
 
 # Run a dev server without GUI, where the admin password is '123'.
 run:

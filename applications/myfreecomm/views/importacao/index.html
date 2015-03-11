@@ -1,5 +1,19 @@
 {{extend 'layout.html'}}
 
+ <p>
+     Selecione um arquivo com extensão .tab
+     o arquivos precisa ser separados por TAB com as seguintes colunas
+ </p>
+        <table class="table-bordered">
+            <tr>
+            <td>purchaser name</td>
+            <td>item description</td>
+            <td>item price</td>
+            <td>purchase count</td>
+            <td>merchant address</td>
+            <td>merchant name</td>
+            </tr>
+        </table><br>
 {{=form}}
 
 {{=LOAD('importacao','get_receita')}}

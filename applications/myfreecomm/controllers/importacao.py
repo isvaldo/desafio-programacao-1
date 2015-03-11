@@ -33,7 +33,7 @@ def index():
         try:
             ## formatando dados do arquivo para banco
             for row in file_csv.read():
-                sales_import(row=row).format()
+                sales_import(row=row, user_id=auth.user_id).format()
         except:
             response.flash = "Erro ao processar arquivo, verifique a formatação"
             return dict(form=form)
@@ -51,12 +51,15 @@ def get_receita():
     :return:
     """
     receita = dict()
-    receita['query'] = db((db.sales.item_id == db.item.id) &
-                          (db.sales.merchant_id == db.merchant.id)).select(db.item.price, db.sales.count)
+    receita['query'] = db((db.sales.user_id == auth.user_id) &
+                          (db.item.user_id == auth.user_id) &
+                          (db.merchant.user_id == auth.user_id) &
+                          (db.sales.item_id == db.item.id) &
+                          (db.sales.merchant_id == db.merchant.id)).select(db.item.price, db.sales.count_item)
 
     ## Multiplica preço pela quantidade usando list of comprehension, soma o resultado
     receita['valor_total'] = sum(
-        [float(tabela.item.price) * float(tabela.sales.count) for tabela in receita['query']]
+        [float(tabela.item.price) * float(tabela.sales.count_item) for tabela in receita['query']]
     )
 
 
