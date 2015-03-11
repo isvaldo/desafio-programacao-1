@@ -27,9 +27,18 @@ def editar():
     Recebe como parametro Args, retorna um grid da tabela
     correspondende, retorna em 404 para valores invalidos
     """
+
+    ## Filtro para representar tabelas na grid
+    db.sales.item_id.label = "Preço item"
+    db.sales.merchant_id.label = "Mercador"
+    db.sales.item_id.filter_out = lambda id: 'R$ '+db(db.item.id == id).select(db.item.price).first().price
+    db.sales.merchant_id.filter_out = lambda id: db(db.merchant.id == id).select(db.merchant.name).first().name
+
+
+    ## recebe parametro table e mostra a grid correspondente
     targe_table = request.vars.table
     if targe_table in ['sales', 'item', 'merchant']:
-        grid = SQLFORM.grid(db[targe_table])
+        grid = SQLFORM.grid(db[targe_table],advanced_search=False)
     else:
         raise HTTP(404, "Pagina não encontrada")
 

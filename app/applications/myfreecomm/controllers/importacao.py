@@ -34,7 +34,6 @@ def index():
             ## formatando dados do arquivo para banco
             for row in file_csv.read():
                 sales_import(row=row).format()
-
         except:
             response.flash = "Erro ao processar arquivo, verifique a formatação"
             return dict(form=form)
@@ -43,6 +42,22 @@ def index():
 
         response.flash = "Arquivo importado com sucesso"
 
-
-
     return dict(form=form)
+
+
+def get_receita():
+    """
+    Retorna receita separada por itens e total
+    :return:
+    """
+    receita = dict()
+    receita['query'] = db((db.sales.item_id == db.item.id) &
+                          (db.sales.merchant_id == db.merchant.id)).select(db.item.price, db.sales.count)
+
+    ## Multiplica preço pela quantidade usando list of comprehension, soma o resultado
+    receita['valor_total'] = sum(
+        [float(tabela.item.price) * float(tabela.sales.count) for tabela in receita['query']]
+    )
+
+
+    return dict(receita=receita)

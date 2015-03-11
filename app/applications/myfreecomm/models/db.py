@@ -23,8 +23,8 @@ DATABASES = {
 
 #################################
 # @TODO isvaldo, documentar conexão
-#
-###########
+##################################
+
 db = DAL('mysql://%s:%s@%s:%s/%s'
          % (DATABASES['amazon']['USER'], DATABASES['amazon']['PASSWORD'],
            DATABASES['amazon']['HOST'], DATABASES['amazon']['PORT'],
@@ -79,3 +79,31 @@ db.define_table('sales',
                 Field('count',  notnull=True))
 
 auth.enable_record_versioning(db)
+
+
+#########################################
+########## FILTROS PARA FK ##############
+#########################################
+
+## Filtros de Sales
+db.sales.count.label = "Quantidade"
+db.sales.purchaser_name.label = "Comprador"
+db.sales.id.label = "Nº registro"
+
+
+## Filtros de Merchant
+db.merchant.name.label = "Nome"
+db.merchant.address.label = "Endereço"
+db.merchant.id.label = "Nº registro"
+
+
+## Filtros de item
+db.item.id.label = "Nº registro"
+db.item.price.label = "Preço"
+db.item.description.label = "Descrição"
+
+
+###################################
+#####Exportação em grid Config#####
+###################################
+
